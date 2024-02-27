@@ -122,4 +122,9 @@ Other Snakemake-related parameters like **--cores** and **--configfile** could b
 ```bash
 snakemake -h
 ```
+### Output
+For R9 workflow, the main output is **target.upstream_downstream.bases.comparison.result.txt**, which contains the variation loci, strand, the number of reads supporting deletion variation, 
+
+For R10 workflow, the main output is **fq.Qscore.info.txt**, which contains the variation loci, group1 (plus.del or minus.del, corresponding to deletion variation loci located on plus or minus strand), group2 (plus.match or minus.match, corresponding to matched reference loci located on plus or minus strand), the mean Q scores of selected config["Num"] of group1, 
+
 
