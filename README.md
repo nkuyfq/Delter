@@ -27,7 +27,7 @@ dependencies:
   - r-dplyr
   - r-vegan 
 
-Users are suggested to use [Conda](https://docs.conda.io/en/latest/) or [Mamba](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html) to install these dependencies. For example, the following shell command could install a workflow handling ONT R9 and R10 sequencing data.
+Users are suggested to use [Conda](https://docs.conda.io/en/latest/) or [Mamba](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html) to install these dependencies. For example, the following shell command could install a workflow handling ONT R9 and R10 sequencing data in a **conda** environment named **snakemake-tutorial**.
 ```bash
 conda env create --name snakemake-tutorial --file R9.environment.yaml
 ```
