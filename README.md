@@ -4,7 +4,7 @@ A tool to filter short artificial deletion variations by Oxford Nanopore Technol
 The tool has been tested on Ubuntu 20.04 with 256GB RAM, 64 CPU cores and a NVIDIA GPU with 48GB RAM. The minimal requirements should be >= 64GB RAM and a NVIDIA GPU with >= 8GB RAM. Other operating systems like Windows or Mac were not tested.
 
 ONT softwares like Guppy, Tombo, ont-fast5-api should be pre-installed before generating Tombo-resquiggled single-read fast5 files.
-Users might run following commands to preprocess R9 fast5 files in shell terminal before running our pipeline.
+Users might run following commands to preprocess R9 fast5 files in shell terminal before running our pipeline. As these steps below need GPU support and might take a long time, our pipeline doesn't contain them.
 ```bash
 #===basecalling the fast5 files===
 ont-guppy/bin/guppy_basecaller -c ont-guppy/data/dna_r9.4.1_450bps_sup.cfg -i $fast5dir/barcode${barcode} -s guppy_sup_basecalled/barcode${barcode} -r --compress_fastq -x cuda:1,2 --gpu_runners_per_device 4 --chunks_per_runner 256 --num_callers 3 --fast5_out
