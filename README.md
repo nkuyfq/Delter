@@ -104,26 +104,22 @@ Bam: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_Guppy6
 ```
 Users should note that, **config values can be overwritten via the command line** even when it has deen defined in the config.yaml.
 
-# Start a run
+### Start a run
+Once the work directory and configuration files are set up, users can run the pipeline as easy as invoking:
 
-Once you set up your configuration file, running the pipeline locally on your computer is as easy as invoking:
-  ```bash
-  sh run.sh
-  ```
-  maximal coverage degenerate primer design (MC-DPD). The approach employed DegePrime to design degenerate primers for the target sequence.
-  ```bash
-  snakemake --configfile multi-DegePrime.yaml -s multi-DegePrime.py --cores 10 --resources disk_mb=80000
-  ```
-  maximal coverage degenerate primer design with errors tolerant (MC-EDPD) or MC-DPD. MultiPrime-orignal is capable of avoiding mismatches that occur at the 3'end position. The approach used in multiPrime-orignal.yaml depends on the value of the "variation" parameter.
-
-  If "variation" is set to 0, then multiPrime uses the MC-DPD approach to design degenerate primers for the target sequence. In this approach, the primer sequences are designed with prefect match (0-mismatch).
-
-  If "variation" is set to a value greater than 0, then multiPrime uses the MC-EDPD approach to design degenerate primers with errors (mismatches) tolerance (1-mismatch or 2-mismatches). In this approach, the primer sequences are allowed to contain a limited number of errors (mismatches), which increases the probability of finding suitable primer sequences for the target sequence.
-  ```bash
-  snakemake --configfile multiPrime-orignal.yaml -s multiPrime-orignal.py --cores 10 --resources disk_mb=80000
-  ```
-  multiPrime is similiar to multiPrime-orignal, but it enables easy avoidance of mismatches at any position.
-  ```bash
-  snakemake --configfile multiPrime.yaml -s multiPrime.py --cores 10 --resources disk_mb=80000
-  ```
+```bash
+cd work_dir
+conda activate snakemake-tutorial
+snakemake -s R9.snakemake.py --cores 8
+```
+or
+```bash
+cd work_dir
+conda activate snakemake-tutorial
+snakemake -s R10.snakemake.py --cores 8
+```
+Other Snakemake-related parameters like **--cores** and **--configfile** could be checked via 
+```bash
+snakemake -h
+```
 
