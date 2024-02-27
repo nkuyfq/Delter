@@ -2,7 +2,32 @@
 A tool to filter short artificial deletion variations by Oxford Nanopore Technologies (ONT) R9 and R10 flow cells and chemistries.
 ## Requirements
 The tool has been tested on Ubuntu 20.04 with 256GB RAM, 64 CPU cores and a NVIDIA GPU with 48GB RAM. The minimal requirements should be >= 64GB RAM and a NVIDIA GPU with >= 8GB RAM. Other operating systems like Windows or Mac were not tested.
+
 ONT softwares like Guppy, Tombo, ont-fast5-api should be pre-installed before generating Tombo-resquiggled single-read fast5 files.
+Users might run following commands to preprocess R9 fast5 files in shell terminal before running our pipeline.
+```bash
+#===basecalling the fast5 files===
+ont-guppy/bin/guppy_basecaller -c ont-guppy/data/dna_r9.4.1_450bps_sup.cfg -i $fast5dir/barcode${barcode} -s guppy_sup_basecalled/barcode${barcode} -r --compress_fastq -x cuda:1,2 --gpu_runners_per_device 4 --chunks_per_runner 256 --num_callers 3 --fast5_out
+
+#===preprocessing R9 fast5 files===
+c=$(ls *.fast5 | wc -l)
+declare -i count=$c-1
+#multiread fast5 to single read fast5
+multi_to_single_fast5 -i guppy_sup_basecalled/barcode${barcode}/workspace -s fast5_pass_single --threads 24 
+#copy to new directory
+cd fast5_pass_single
+mkdir all_single_fast5s
+for ((j=0;j<=$count;j=j+1))
+do
+  echo $j
+  cp -r ./$j/*.fast5 all_single_fast5s
+  rm -rf ./$j
+done
+#align to reference genome via tombo resquiggle
+cd $rawdata
+tombo resquiggle guppy_sup_basecalled/barcode${barcode}/workspace/fast5_pass_single/all_single_fast5s data/Refs/$refseq --processes 24 --overwrite --num-most-common-errors 5  --failed-reads-filename tombo_resquiggle_failed_fast5.txt
+```
+The fast5 files in the directory named **all_single_fast5s** could be employed in downstream workflow, which equals the input parameter **Tombo_dir** in shell command line or config yaml (details listed in **Configure input parameters for R9 workflow** section). 
 ## Installation
 The tool runs via Snakemake workflows. Users must install workflow dependencies including [Snakemake](https://snakemake.readthedocs.io/en/latest/tutorial/tutorial.html) before using the pipeline. The workflow dependencies, which stored in a file named environment.yaml, are listed as below:
 
