@@ -42,7 +42,7 @@ To exit the environment (after finishing the usage of the pipeline), just execut
   ```
 ## Run the pipeline
 The whole pipeline contains two separate workflows to handle ONT R9 and R10 sequencing data respectively, i.e., **R9.snakemake.py** for **R9** data and **R10.snakemake.py** for **R10** data. 
-The working directory contains files named `R9.snakemake.config.yaml` and `R10.snakemake.config.yaml`.
+The working directory contains files named `R9.snakemake.config.yaml` and `R10.snakemake.config.yaml`, which stores key input parameters for each workflow.
 ### Configure input parameters for R9 workflow
 There are two ways to configure input parameters for R9 workflow.
 
@@ -75,23 +75,34 @@ Refseq: "/public/data1/yefq/data/Refs/Zymo_Saccharomyces_cerevisiae_Seq5_ref.fa"
 Outdir: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_Guppy621_comparison/snakemake-tutorial/data/test" #240225 updated
 ```
 Users should note that, **config values can be overwritten via the command line** even when it has deen defined in the config.yaml.
+### Configure input parameters for R10 workflow
+There are also two ways to configure input parameters for R10 workflow.
 
-The working directory contains files named `multi-DegePrime.yaml`, `multiPrime-original.yaml` and `multiPrime.yaml`. These are the central file in which all user settings, paramter values and path specifications are stored. `multi-DegePrime.yaml` employs DEGEPRIME-1.1.0 for maximum coverage degenerate primer design (MC-DPD), `multiPrime-orignal.yaml` and `multiPrime.yaml` use multiPrime-core.py for MC-DPD or MC-DPD with error. During a run, all steps of the pipeline will retrieve their paramter values from these file. It follows the yaml syntax (find more information about yaml and it's syntax [here](http://www.yaml.org/)) what makes it easy to read and edit. The main principles are:
-  - everything that comes after a `#` symbol is considered as comment and will not be interpreted
-  - paramters are given as key-value pair, with `key` being the name and `value` the value of any paramter
+(1) Via shell command line
 
-Before starting the pipeline, open the `multiPrime.yaml` configuration file and set all options according as required. This should at least include:
-  - **name of the input directory** - where are your input fasta files stored
-	-input_dir: ["abs_path_to_input_dir"]
-  - **name of the output directory** - where should the pipeline store the output files (the direcotry is created if not existing)
-	-results_dir: ["abs_path_to_results_dir"]
-  - **name of the log directory** - where should the pipeline store the log files
-	-log_dir: ["abs_path_to_log_dir"]
-  - **name of the scripts directory** - where should the pipeline store the scripts files
-	-scripts_dir: ["abs_path_to"]/multiPrime/scripts
-  - **name(s) of your input samples** - please note: If your sample is named `sample1.fa` then `sample1` will be kept as naming scheme throughout the entire run to indicate output files that belong to this input file, e.g. the pipeline will create a file called `sample1.fa`. If you have multiple input files, just follow the given pattern with one sample name per line (and a dash that indicates another list item).
-  - **identity** - threshold for classification. please note: If you set 1, multiPrime will design candidate primer pairs for each fasta in input files. Suggestion: 0.7-0.8. 
-  - **others** - for more information on the parameters, please refer to the YAML file.
+Users could define customized input paramaters using **--config** option in Snakemake command line.
+```bash
+Usage:
+snakemake -s R10.snakemake.py --cores n --config Ref=refname Num=5 Vcf=path/to/VCF Refseq=path/to/refseq Outdir=path/to/outputdir Bam=path/to/sorted/bam
+Ref=refname                   The value of #CHROM in vcf file, e.g., 'Ref=chr1'
+Num=5                         The number of bases up- and down-stream that are centered around the variation loci, default=5
+Vcf=path/to/VCF               The file path to vcf file, e.g., 'Vcf=/data/res/lofreq.vcf'
+Refseq=path/to/refseq         The file path to reference sequence, e.g., 'Refseq=/database/COVID-19.fa'
+Outdir=path/to/outputdir      The file path storing the output results and intermediate files, e.g., 'Outdir=/data/res'
+Bam=path/to/sorted/bam        The file path to sorted bam files, e.g., 'Bam=/data/res/sorted.bam'
+```
+(2) Edit config.yaml
+
+Users could also define customized input paramaters by editing R10.snakemake.config.yaml.
+```yaml
+Ref: "Zymo_Saccharomyces_cerevisiae_Seq5_ref"
+Num: "5"
+Vcf: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_Guppy621_comparison/Sce20_guppy_sup_aligned.test.vcf" #20240226 updated
+Refseq: "/public/data1/yefq/data/Refs/Zymo_Saccharomyces_cerevisiae_Seq5_ref.fa" #240225 updated
+Outdir: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_Guppy621_comparison/snakemake-tutorial-R10/data/test" #240225 updated
+Bam: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_Guppy621_comparison/Sce20_guppy_sup_aligned.softclip_trimmed.endtrim10_minimap2_align.mapped.sorted.bam"
+```
+Users should note that, **config values can be overwritten via the command line** even when it has deen defined in the config.yaml.
 
 # Start a run
 
