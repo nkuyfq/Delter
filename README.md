@@ -24,7 +24,6 @@ do
   rm -rf ./$j
 done
 #align to reference genome via tombo resquiggle
-cd $rawdata
 tombo resquiggle guppy_sup_basecalled/barcode${barcode}/workspace/fast5_pass_single/all_single_fast5s data/Refs/$refseq --processes 24 --overwrite --num-most-common-errors 5  --failed-reads-filename tombo_resquiggle_failed_fast5.txt
 ```
 The fast5 files in the directory named **all_single_fast5s** could be employed in downstream workflow, which equals the input parameter **Tombo_dir** in shell command line or config yaml (details listed in **Configure input parameters for R9 workflow** section). 
