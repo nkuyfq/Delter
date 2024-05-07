@@ -1,0 +1,38 @@
+Bam: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20240111_Guppy621_comparison/HAdV55to11_penton_amplicon1_guppy_sup_filtered_reads_minimap2_align.mapped.sorted.bam"
+Ref: "hAdV11_penton"
+Num: "5"
+Tombo_dir: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20240111_guppy_sup_basecalled/HAdV55to11_penton_amplicon1/workspace/fast5_pass_single/all_single_fast5s"
+Subsample: "2000"
+Vcf: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20240111_Guppy621_comparison/HAdV55to11_penton_amplicon1_guppy_sup_aligned.softclip_trimmed.endtrim10_minimap2_align.lofreq.filtered.vcf" #20240226 updated
+#Vcf: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20240111_Guppy621_comparison/snakemake-tutorial-20240429/data/test/HAdV55to11_penton_plasmid_guppy_sup_aligned.softclip_trimmed.endtrim10_minimap2_align.test.vcf" #20240226 updated
+Refseq: "/public/data1/yefq/data/Refs/hAdV11_penton.fa" #240225 updated
+Outdir: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20240111_Guppy621_comparison/snakemake-tutorial-20240429/data/test" #240225 updated
+Flowcell: "R9"
+Strategy: "Direct"
+
+
+
+Bam: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20240111_Guppy621_comparison/HAdV55to11_penton_plasmid_guppy_sup_filtered_reads_minimap2_align.mapped.sorted.bam"
+Ref: "hAdV11_penton"
+Num: "5"
+Tombo_dir: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20240111_guppy_sup_basecalled/HAdV55to11_penton_plasmid/workspace/fast5_pass_single/all_single_fast5s"
+Subsample: "2000"
+#Vcf: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20240111_Guppy621_comparison/HAdV55to11_penton_plasmid_guppy_sup_aligned.softclip_trimmed.endtrim10_minimap2_align.lofreq.filtered.vcf" #20240226 updated
+Vcf: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20240111_Guppy621_comparison/snakemake-tutorial-20240429/data/test/HAdV55to11_penton_plasmid_guppy_sup_aligned.softclip_trimmed.endtrim10_minimap2_align.test.vcf" #20240226 updated
+Refseq: "/public/data1/yefq/data/Refs/hAdV11_penton.fa" #240225 updated
+Outdir: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20240111_Guppy621_comparison/snakemake-tutorial-20240429/data/test" #240225 updated
+Flowcell: "R9"
+Strategy: "Direct"
+
+
+# Bam: "/media/sf_Data/snakemake-tutorial-20240429/data/test/Sce20_guppy_sup_aligned.softclip_trimmed.endtrim10_minimap2_align.mapped.sorted.bam" #240225 updated
+# Ref: "Zymo_Saccharomyces_cerevisiae_Seq5_ref"
+# Num: "5"
+# Tombo_dir: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_guppy_sup_basecalled/Sce20/workspace/fast5_pass_single/all_single_fast5s"
+# Subsample: "2000"
+# Vcf: "/media/sf_Data/snakemake-tutorial-20240429/data/test/Sce20_guppy_sup_aligned.softclip_trimmed.endtrim10_minimap2_align.lofreq.filtered.processed.vcf" #240225 updated
+# Refseq: "/media/sf_Data/snakemake-tutorial-20240429/data/test/Zymo_Saccharomyces_cerevisiae_Seq5_ref.fa" #240225 updated
+# Outdir: "/media/sf_Data/snakemake-tutorial-20240429/data/test" #240225 updated
+# Flowcell: "R10"
+# Strategy: "Direct"
+
