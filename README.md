@@ -135,7 +135,7 @@ There are two ways to configure input parameters for this workflow.
 Users could define customized input paramaters using **--config** option in Snakemake command line.
 ```bash
 Usage:
-snakemake -s R9.snakemake.py --cores 8 --config Ref=refname Num=5 Vcf=path/to/VCF Refseq=path/to/refseq Outdir=path/to/outputdir Bam=path/to/sorted/bam Tombo_dir=path/to/tombo_processed/fast5 Subsample=2000
+snakemake -s snakemake.signal+Q.py --cores 8 --config Ref=refname Num=5 Vcf=path/to/VCF Refseq=path/to/refseq Outdir=path/to/outputdir Bam=path/to/sorted/bam Tombo_dir=path/to/tombo_processed/fast5 Subsample=2000 Flowcell=R9 Strategy=Amplicon
 Ref=refname                             The value of #CHROM in vcf file, e.g., 'Ref=chr1'
 Num=5                                   The number of bases up- and down-stream that are centered around the variation loci, default=5
 Vcf=path/to/VCF                         The file path to vcf file, e.g., 'Vcf=/data/res/lofreq.vcf'
@@ -144,6 +144,8 @@ Outdir=path/to/outputdir                The file path storing the output results
 Bam=path/to/sorted/bam                  The file path to sorted bam files, e.g., 'Bam=/data/res/sorted.bam'
 Tombo_dir=path/to/tombo_processed/fast5 The file path to tombo-resquiggled single fats5 files, e.g., 'Tombo_dir=/data/fast5'
 Subsample=2000                          The number to subsample from reads covering variation loci, should be larger than 200, default=2000
+Flowcell=R9                             The version of flow cell, should be R9 or R10, default=R9
+Strategy=Amplicon                       The sequencing strategy, should be Amplicon or Direct, default=Amplicon
 ```
 (2) Edit config.yaml
 
