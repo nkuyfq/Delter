@@ -13,7 +13,7 @@ tombodir=config["Tombo_dir"]
 subsample=config["Subsample"]
 
 print("Usage:")
-print("snakemake -s R9.snakemake.test.py --cores 8 --config Ref=refname Num=5 Vcf=path/to/VCF Refseq=path/to/refseq Outdir=path/to/outputdir Bam=path/to/sorted/bam Tombo_dir=path/to/tombo_processed/fast5 Subsample=2000")
+print("snakemake -s snakemake.signal+Q.py --cores 8 --config Ref=refname Num=5 Vcf=path/to/VCF Refseq=path/to/refseq Outdir=path/to/outputdir Bam=path/to/sorted/bam Tombo_dir=path/to/tombo_processed/fast5 Subsample=2000 Flowcell=R9 Strategy=Amplicon")
 print("Ref=refname".ljust(40)+"The value of #CHROM in vcf file, e.g., 'Ref=chr1'")
 print("Num=5".ljust(40)+"The number of bases up- and down-stream that are centered around the variation loci, default=5")
 print("Vcf=path/to/VCF".ljust(40)+"The file path to vcf file, e.g., 'Vcf=/data/res/lofreq.vcf'")
