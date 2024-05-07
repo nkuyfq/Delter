@@ -188,6 +188,6 @@ For R9 workflow, the main output is **target.upstream_downstream.bases.compariso
 
 For R9 or R10 workflow, the main output may be **fq.Qscore.info.txt**, which contains (1) the variation loci position, (2) group1 (plus.del or minus.del, corresponding to deletion variation loci located on plus or minus strand), (3) group2 (plus.match or minus.match, corresponding to matched reference loci located on plus or minus strand), (4) the mean Q scores of upstream and downstream config["Num"] bases centered around variation loci of group1, **users could compare this value against the pre-set threshold (=21) in our article to decide whether the variation loci is artificial**, (5) the mean Q scores of upstream and downstream config["Num"] bases centered around variation loci of group2, (6) the P values between group1 and group2.
 
-For the combined workflow, the main output(s) should be **target.upstream_downstream.bases.comparison.result.txt** and/or **fq.Qscore.info.txt**, which contain(s)
+For the combined workflow, the main output(s) should be **target.upstream_downstream.bases.comparison.result.txt** and/or **fq.Qscore.info.txt**, which contain(s) the same information as mentioned above.
 
 
