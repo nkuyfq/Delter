@@ -149,16 +149,18 @@ Strategy=Amplicon                       The sequencing strategy, should be Ampli
 ```
 (2) Edit config.yaml
 
-Users could also define customized input paramaters by editing R9.snakemake.config.yaml.
+Users could also define customized input paramaters by editing config.yaml.
 ```yaml
 Bam: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_Guppy621_comparison/Sce20_guppy_sup_aligned.softclip_trimmed.endtrim10_minimap2_align.mapped.sorted.bam"
 Ref: "Zymo_Saccharomyces_cerevisiae_Seq5_ref"
 Num: "5"
 Tombo_dir: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_guppy_sup_basecalled/Sce20/workspace/fast5_pass_single/all_single_fast5s"
 Subsample: "2000"
-Vcf: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_Guppy621_comparison/Sce20_guppy_sup_aligned.test.vcf" #20240226 updated
-Refseq: "/public/data1/yefq/data/Refs/Zymo_Saccharomyces_cerevisiae_Seq5_ref.fa" #240225 updated
-Outdir: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_Guppy621_comparison/snakemake-tutorial/data/test" #240225 updated
+Vcf: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_Guppy621_comparison/Sce20_guppy_sup_aligned.test.vcf" 
+Refseq: "/public/data1/yefq/data/Refs/Zymo_Saccharomyces_cerevisiae_Seq5_ref.fa" 
+Outdir: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_Guppy621_comparison/snakemake-tutorial/data/test" 
+Flowcell: "R9"
+Strategy: "Direct"
 ```
 Users should note that, **config values can be overwritten via the command line** even when it has deen defined in the config.yaml.
 ### Start a run
