@@ -26,7 +26,7 @@ done
 #align to reference genome via tombo resquiggle
 tombo resquiggle guppy_sup_basecalled/barcode${barcode}/workspace/fast5_pass_single/all_single_fast5s data/Refs/$refseq --processes 24 --overwrite --num-most-common-errors 5  --failed-reads-filename tombo_resquiggle_failed_fast5.txt
 ```
-The fast5 files in the directory named **all_single_fast5s** could be employed in downstream workflow, which equals the input parameter **Tombo_dir** in shell command line or config yaml (details listed in **Configure input parameters for R9 workflow** section). 
+The fast5 files in the directory named **all_single_fast5s** could be employed in downstream workflow, which equals the input parameter **Tombo_dir** in shell command line or config yaml (details listed in **Configure input parameters** section). 
 ## Installation
 The tool runs via Snakemake workflows. Users must install workflow dependencies including [Snakemake](https://snakemake.readthedocs.io/en/latest/tutorial/tutorial.html) before using the pipeline. The workflow dependencies, which stored in a file named environment.yaml, are listed as below:
 
@@ -51,14 +51,14 @@ dependencies:
   - r-dplyr
   - r-vegan 
 
-Users are suggested to use [Conda](https://docs.conda.io/en/latest/) or [Mamba](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html) to install these dependencies. For example, the following shell command could install a workflow handling ONT R9 and R10 sequencing data in a **conda** environment named **snakemake-tutorial**.
+Users are suggested to use [Conda](https://docs.conda.io/en/latest/) or [Mamba](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html) to install these dependencies. For example, the following shell command could install a workflow handling ONT R9 and R10 sequencing data in a **conda** environment named **Delter**.
 ```bash
-conda env create --name snakemake-tutorial --file R9.environment.yaml
+conda env create --name Delter --file environment.yaml
 ```
 ## Activate and exit the environment
 To activate the environment 
   ```bash
-  conda activate snakemake-tutorial
+  conda activate Delter
   ```
 To exit the environment (after finishing the usage of the pipeline), just execute
   ```bash
