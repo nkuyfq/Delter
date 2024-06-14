@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-perl scripts/parse_variant_type_via_lofreq_output-v2.pl "${snakemake_input[0]}" "${snakemake_input[1]}" "${snakemake_params[opts1]}" "${snakemake_params[opts2]}" "${snakemake_output[0]}" "${snakemake_output[1]}" "${snakemake_output[2]}" "${snakemake_output[3]}" "${snakemake_output[4]}" "${snakemake_output[5]}" "${snakemake_output[6]}" "${snakemake_output[7]}"
+#perl scripts/parse_variant_type_via_lofreq_output-v2.pl "${snakemake_input[0]}" "${snakemake_input[1]}" "${snakemake_params[opts1]}" "${snakemake_params[opts2]}" "${snakemake_output[0]}" "${snakemake_output[1]}" "${snakemake_output[2]}" "${snakemake_output[3]}" "${snakemake_output[4]}" "${snakemake_output[5]}" "${snakemake_output[6]}" "${snakemake_output[7]}"
 
+perl scripts/parse_variant_type_via_lofreq_output-v3.pl "${snakemake_input[0]}" "${snakemake_input[1]}" "${snakemake_params[opts1]}" "${snakemake_params[opts2]}" "${snakemake_output[0]}" "${snakemake_output[1]}" "${snakemake_output[2]}" "${snakemake_output[3]}" "${snakemake_output[4]}" "${snakemake_output[5]}" "${snakemake_output[6]}" "${snakemake_output[7]}"
 
 
 

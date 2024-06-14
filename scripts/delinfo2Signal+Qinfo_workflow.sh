@@ -128,15 +128,6 @@ fi
 
 echo "Run completed" > ${output3}
 
-rm *.fq 
-rm *.readID.txt
-rm $targetposlist
-rm $startposlist
-rm $endposlist
-rm $dellenlist
-rm $reglenlist
-rm $metriclist
-
 # 	perl $zilinplace/scripts/yfq_remote/get_qualityscore_of_upstream_downstream_N_bases_v2.pl ${targetpos} D $num ${name}_guppy_sup.pos${targetpos}.rev.simpified.sam.txt ./Fq/TP/${name}_guppy_sup.pos${targetpos}.minus.del.fq ${name}_guppy_sup.pos${targetpos}.minus.del.readID.txt
 # 	perl $zilinplace/scripts/yfq_remote/get_qualityscore_of_upstream_downstream_N_bases_v2.pl ${targetpos} D $num ${name}_guppy_sup.pos${targetpos}.simpified.sam.txt ./Fq/TP/${name}_guppy_sup.pos${targetpos}.plus.del.fq ${name}_guppy_sup.pos${targetpos}.plus.del.readID.txt
 # 	perl $zilinplace/scripts/yfq_remote/get_qualityscore_of_upstream_downstream_N_bases_v2.pl ${targetpos} M $num ${name}_guppy_sup.pos${targetpos}.rev.simpified.sam.txt ./Fq/TP/${name}_guppy_sup.pos${targetpos}.minus.match.fq ${name}_guppy_sup.pos${targetpos}.minus.match.readID.txt

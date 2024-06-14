@@ -146,20 +146,48 @@ while(<FP1>){
 				$AF=$2;
 				$DP4=$4;
 				if(($flowcell eq "R9") && ($strategy eq "Amplicon")){
-					$Metric="Signal";
+					my $str=$flowcell."_".$strategy;
+					my $curthres=$threshold{$str};
+					my @tmps=split/,/,$DP4;
+					if($tmps[2] >= $curthres && $tmps[3] >= $curthres){
+						$Metric="Signal";
+					}
+					else {
+						$Metric="NA";
+					}
+					#$Metric="Signal";
 				}
 				if($flowcell eq "R10"){
-					$Metric="Qscore";
+					my $str=$flowcell."_".$strategy;
+					my $curthres=$threshold{$str};
+					my @tmps=split/,/,$DP4;
+					if($tmps[2] >= $curthres && $tmps[3] >= $curthres){
+						$Metric="Qscore";
+					}
+					else {
+						$Metric="NA";
+					}
+					#$Metric="Qscore";
 				}
 				if(($flowcell eq "R9") && ($strategy eq "Direct")){
 					my $str=$flowcell."_".$strategy;
 					my $curthres=$threshold{$str};
 					my @tmps=split/,/,$DP4;
 					if($tmps[2] < $curthres && $tmps[3] < $curthres){
-						$Metric="Qscore";
+						if($tmps[2] >= 20 && $tmps[3] >= 20){
+							$Metric="Qscore";
+						}
+						else {
+							$Metric="NA";
+						}
 					}
 					else {
-						$Metric="Signal";
+						if($tmps[2] >= 20 && $tmps[3] >= 20){
+							$Metric="Signal";
+						}
+						else {
+							$Metric="NA";
+						}
 					}
 				}
 			}
