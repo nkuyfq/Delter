@@ -1,0 +1,23 @@
+Bam: "/data/Sequencing_data/Zymo_Gut/20240417_Guppy621_comparison/Zymo_Gut_guppy_sup_filtered_reads_minimap2_align.mapped.sorted.bam" #240225 updated
+Ref: "Bacteroides_fragilis"
+Num: "5"
+Tombo_dir: "/data/Sequencing_data/fast5/20240417_Zymo_Gut/20240417_guppy_sup_basecalled/Zymo_Gut/workspace/fast5_pass_single/all_single_fast5s"
+Subsample: "2000"
+Vcf: "/data/Sequencing_data/Zymo_Gut/20240417_Guppy621_comparison/Bacteroides_fragilis.vcf" #240225 updated
+Refseq: "/data/Database/Refs/D6331.refseq/single_fasta/Bacteroides_fragilis.fa" #240225 updated
+Outdir: "/data/Sequencing_data/Zymo_Gut/20240417_Guppy621_comparison/Snakemake_Res/Bacteroides_fragilis" #240225 updated
+Flowcell: "R9"
+Strategy: "Direct"
+
+
+# Bam: "/data/Sequencing_data/snakemake-tutorial-20240429/data/test/Sce20_guppy_sup_aligned.softclip_trimmed.endtrim10_minimap2_align.mapped.sorted.bam" #240225 updated
+# Ref: "Zymo_Saccharomyces_cerevisiae_Seq5_ref"
+# Num: "5"
+# Tombo_dir: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_guppy_sup_basecalled/Sce20/workspace/fast5_pass_single/all_single_fast5s"
+# Subsample: "2000"
+# Vcf: "/data/Sequencing_data/snakemake-tutorial-20240429/data/test/Sce20_guppy_sup_aligned.softclip_trimmed.endtrim10_minimap2_align.lofreq.filtered.processed.vcf" #240225 updated
+# Refseq: "/data/Sequencing_data/snakemake-tutorial-20240429/data/test/Zymo_Saccharomyces_cerevisiae_Seq5_ref.fa" #240225 updated
+# Outdir: "/data/Sequencing_data/snakemake-tutorial-20240429/data/test1" #240225 updated
+# Flowcell: "R10"
+# Strategy: "Direct"
+
