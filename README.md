@@ -111,7 +111,7 @@ Users should note that, **config values can be overwritten via the command line*
 ### Start a run
 Once the work directory and configuration files are set up, users can run the pipeline as easy as invoking:
 ```bash
-cd work_dir
+cd /pathway/to/Delter/directory
 conda activate Delter
 snakemake -s Delter.py --cores 8
 ```
@@ -120,16 +120,14 @@ Other Snakemake-related parameters like **--cores** and **--configfile** could b
 snakemake -h
 ```
 ### Output
-There are two main outputs according to the indexes used. 
+There are several outputs according to the indexes used. 
 
 **(1) target.upstream_downstream.bases.comparison.result.txt**. When the workflow used MRPP A, the main output is **target.upstream_downstream.bases.comparison.result.txt**, which contains (1) the variation locus position, (2) group1 (plus.match or minus.match, corresponding to forward-aligned reads supporting the reference allele and reverse-aligned reads supporting the reference allele), (3) group2 (plus.del or minus.del, corresponding to forward-aligned reads supporting the non-reference allele and reverse-aligned reads supporting the non-reference allele), (4) the number of reads supporting group1 (**should always be around or higher than 400 in direct sequencing**), (5) the number of reads supporting group2 (**should always be around or higher than 400 in direct sequencing**), (6) the mean current measurements of upstream and downstream config["Num"] bases centered around variation locus of group1, (7) the mean current measurements of upstream and downstream config["Num"] bases centered around variation locus of group2, (8) P values between current measurements of group1 and group2, (9) MRPP P values, (10) **MRPP A statistic, users could compare this value against the pre-set threshold (WTA/Amplicon sequencing: 0.01; direct sequencing: 0.001) in our article to decide whether the variation locus is artificial**.
 
 **(2) fq.Qscore.info.txt**. For R9 or R10 data, when sequencing depth is low, Q score might be used to identify artificial deletions. The main output is **fq.Qscore.info.txt**, which contains (1) the variation locus position, (2) group1 (corresponding to forward-aligned reads supporting the non-reference allele and reverse-aligned reads supporting the non-reference allele), (3) group2 (plus.match or minus.match, corresponding to corresponding to forward-aligned reads supporting the reference allele and reverse-aligned reads supporting the reference allele), (4) the number of reads supporting group1 (**should always be ≥20**), (5) the number of reads supporting group2 (**should always be ≥20**), (6) the mean Q scores of upstream and downstream config["Num"] bases centered around variation locus of group1, **users could compare this value against the pre-set threshold in our article to decide whether the variation locus is artificial**, (7) the mean Q scores of upstream and downstream config["Num"] bases centered around variation locus of group2, (8) the P values between group1 and group2.
 
-Users should note that before comparing the results to pre-set thresholds, they are strongly recommended to filter the 4th and 5th columns in the **target.upstream_downstream.bases.comparison.result.txt** or/and **fq.Qscore.info.txt** according to our article, or the identification result may be biased due to low sequencing depth.
-
 **(3) variant.info.txt**. This file stores basic information of each variation output by VCF, which is used by the workflow. The 2th-10th columns are identical to VCF. Users should note that DP4 could be lower than DP, and **choosing to use MRPP A or Q score mainly depends on DP4 field**. The 12th-17th columns represent the location of deletion (homo or non-homo), the 1-based strating position, the 0-based starting position of homo or non-homo region, the 0-based ending position of homo or non-homo region, the deletion length output by Variation caller, and the length of homo or non-homo region (= 15th-14th+1). Our workflow use a strict criteria to extract reads with and without deletions. For example, if a deletion lacks 3 bases relative to the reference, then reads supporting the non-reference allele should only contain 3-base deletions. Therefore, **some deletions may be omitted due to undesirable read numbers**.     
 
-
+Users should note that before comparing the results to pre-set thresholds, they are strongly recommended to filter the 4th and 5th columns in the **target.upstream_downstream.bases.comparison.result.txt** or/and **fq.Qscore.info.txt** according to our article, or the identification result may be biased due to low sequencing depth. We have provided two accessory scripts bundled in the workflow.
 
 
