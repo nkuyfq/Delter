@@ -84,7 +84,7 @@ Bam=path/to/sorted/bam                  The file path to sorted bam files, e.g.,
 Tombo_dir=path/to/tombo_processed/fast5 The file path to tombo-resquiggled single fats5 files, e.g., 'Tombo_dir=/data/fast5'
 Subsample=2000                          The number to subsample from reads covering variation loci, should be larger than 200, default=2000
 Flowcell=R9                             The version of flow cell, should be R9 or R10, default=R9
-Strategy=Amplicon                       The sequencing strategy, should be Amplicon or Direct, default=Direct
+Strategy=Direct                         The sequencing strategy, should be Amplicon or Direct, default=Direct
 MRPPthres=0.001                         The threshold of MRPP A, default=0.001
 HomoQthres=23                           The threshold of homo-dels, default=23
 OtherQthres=20.6                        The threshold of other-dels, default=20.6
@@ -103,6 +103,9 @@ Refseq: "/public/data1/yefq/data/Refs/Zymo_Saccharomyces_cerevisiae_Seq5_ref.fa"
 Outdir: "/public/data1/yefq/data/fast5/20220703_WGA_twist/processed/20230426_Guppy621_comparison/snakemake-tutorial/data/test" 
 Flowcell: "R9"
 Strategy: "Direct"
+MRPPthres: "0.001"
+HomoQthres: "23"
+OtherQthres: "20.6"
 ```
 Users should note that, **config values can be overwritten via the command line** even when it has deen defined in the config.yaml.
 ### Start a run
