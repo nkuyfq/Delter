@@ -5,6 +5,9 @@ outdir=config["Outdir"] #240225 updated
 BAM=config["Bam"] #240225 updated
 flowcell=config["Flowcell"] #240429 updated
 strategy=config["Strategy"] #240429 updated
+mrppthres=config["MRPPthres"] #240620 updated
+homoQthres=config["HomoQthres"] #240620 updated
+otherQthres=config["OtherQthres"] #240620 updated
 
 
 ref_name=config["Ref"]
@@ -13,7 +16,7 @@ tombodir=config["Tombo_dir"]
 subsample=config["Subsample"]
 
 print("Usage:")
-print("snakemake -s R9.snakemake.test.py --cores 8 --config Ref=refname Num=5 Vcf=path/to/VCF Refseq=path/to/refseq Outdir=path/to/outputdir Bam=path/to/sorted/bam Tombo_dir=path/to/tombo_processed/fast5 Subsample=2000")
+print("snakemake -s Delter.py --cores 8 --config Ref=refname Num=5 Vcf=path/to/VCF Refseq=path/to/refseq Outdir=path/to/outputdir Bam=path/to/sorted/bam Tombo_dir=path/to/tombo_processed/fast5 Subsample=2000 Flowcell=R9 Strategy=Direct MRPPthres=0.001 HomoQthres=23 OtherQthres=20.6")
 print("Ref=refname".ljust(40)+"The value of #CHROM in vcf file, e.g., 'Ref=chr1'")
 print("Num=5".ljust(40)+"The number of bases up- and down-stream that are centered around the variation loci, default=5")
 print("Vcf=path/to/VCF".ljust(40)+"The file path to vcf file, e.g., 'Vcf=/data/res/lofreq.vcf'")
@@ -23,7 +26,12 @@ print("Bam=path/to/sorted/bam".ljust(40)+"The file path to sorted bam files, e.g
 print("Tombo_dir=path/to/tombo_processed/fast5".ljust(40)+"The file path to tombo-resquiggled single fats5 files, e.g., 'Tombo_dir=/data/fast5'")
 print("Subsample=2000".ljust(40)+"The number to subsample from reads covering variation loci, should be larger than 200, default=2000")
 print("Flowcell=R9".ljust(40)+"The version of flow cell, should be R9 or R10, default=R9")
-print("Strategy=Amplicon".ljust(40)+"The sequencing strategy, should be Amplicon or Direct, default=Amplicon")
+print("Strategy=Amplicon".ljust(40)+"The sequencing strategy, should be Amplicon or Direct, default=Direct")
+print("MRPPthres=0.001".ljust(40)+"The threshold of MRPP A, default=0.001")
+print("HomoQthres=23".ljust(40)+"The threshold of homo-dels, default=23")
+print("OtherQthres=20.6".ljust(40)+"The threshold of other-dels, default=20.6")
+
+
 
 
 
@@ -68,7 +76,11 @@ rule delinfo2Signal_Qinfo:
         opts2=str(num),
         opts3=str(outdir),
         opts4=str(tombodir),
-        opts5=str(subsample)
+        opts5=str(subsample),
+        opts6=str(strategy),
+        opts7=str(mrppthres),
+        opts8=str(homoQthres),
+        opts9=str(otherQthres)
     script:
         "scripts/delinfo2Signal+Qinfo.sh"
 
