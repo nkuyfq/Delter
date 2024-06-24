@@ -28,7 +28,7 @@ tombo resquiggle guppy_sup_basecalled/barcode${barcode}/workspace/fast5_pass_sin
 ```
 The fast5 files in the directory named **all_single_fast5s** could be employed in downstream workflow, which equals the input parameter **Tombo_dir** in shell command line or config yaml (details listed in **Configure input parameters** section). 
 ## Installation
-The tool runs via Snakemake workflows. Users must install workflow dependencies including [Snakemake](https://snakemake.readthedocs.io/en/latest/tutorial/tutorial.html) before using the pipeline. The workflow dependencies, which stored in a file named environment.yaml, are listed as below:
+The tool runs via Snakemake workflows. Users must install workflow dependencies including [Snakemake](https://snakemake.readthedocs.io/en/latest/tutorial/tutorial.html) (**Version >= 7.3**) before using the pipeline. The workflow dependencies, which stored in a file named environment.yaml, are listed as below:
 
 channels:
   - conda-forge
