@@ -137,10 +137,10 @@ print("Plus Del starts")
 count = 0
 for readid in plus_del_readidlists:
     count+=1
-    if count%1000 == 0:
+    if count%100 == 0:
         print(count) 
     fast5_filepath = tombo_dir + '/' + readid + '.fast5'
-    if len(tombo_extraction(fast5_filepath)) == 8:
+    if (os.path.exists(fast5_filepath)) and (len(tombo_extraction(fast5_filepath)) == 8):
         mapped_chrom, mapped_start, mapped_end, mapped_strand, feature_signal, tombo_event_bases, tombo_event_starts, tombo_event_lengths = tombo_extraction(fast5_filepath)
         dat = pd.DataFrame()
         dat['tombo_event_bases'] = tombo_event_bases
@@ -160,10 +160,10 @@ print("Plus Match starts")
 count = 0
 for readid in plus_match_readidlists:
     count+=1
-    if count%1000 == 0:
+    if count%100 == 0:
         print(count) 
     fast5_filepath = tombo_dir + '/' + readid + '.fast5'
-    if len(tombo_extraction(fast5_filepath)) == 8:
+    if (os.path.exists(fast5_filepath)) and (len(tombo_extraction(fast5_filepath)) == 8):
         mapped_chrom, mapped_start, mapped_end, mapped_strand, feature_signal, tombo_event_bases, tombo_event_starts, tombo_event_lengths = tombo_extraction(fast5_filepath)
         dat = pd.DataFrame()
         dat['tombo_event_bases'] = tombo_event_bases
@@ -183,10 +183,10 @@ print("Minus Del starts")
 count = 0
 for readid in minus_del_readidlists:
     count+=1
-    if count%1000 == 0:
+    if count%100 == 0:
         print(count) 
     fast5_filepath = tombo_dir + '/' + readid + '.fast5'
-    if len(tombo_extraction(fast5_filepath)) == 8:
+    if (os.path.exists(fast5_filepath)) and (len(tombo_extraction(fast5_filepath)) == 8):
         mapped_chrom, mapped_start, mapped_end, mapped_strand, feature_signal, tombo_event_bases, tombo_event_starts, tombo_event_lengths = tombo_extraction(fast5_filepath)
         dat = pd.DataFrame()
         dat['tombo_event_bases'] = tombo_event_bases
@@ -207,10 +207,10 @@ print("Minus Match starts")
 count = 0
 for readid in minus_match_readidlists:
     count+=1
-    if count%1000 == 0:
+    if count%100 == 0:
         print(count) 
     fast5_filepath = tombo_dir + '/' + readid + '.fast5'
-    if len(tombo_extraction(fast5_filepath)) == 8:
+    if (os.path.exists(fast5_filepath)) and (len(tombo_extraction(fast5_filepath)) == 8):
         mapped_chrom, mapped_start, mapped_end, mapped_strand, feature_signal, tombo_event_bases, tombo_event_starts, tombo_event_lengths = tombo_extraction(fast5_filepath)
         dat = pd.DataFrame()
         dat['tombo_event_bases'] = tombo_event_bases
