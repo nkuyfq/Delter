@@ -67,7 +67,7 @@ To exit the environment (after finishing the usage of the pipeline), just execut
 ## Run the pipeline
 The whole pipeline could handle ONT R9 and R10 sequencing data. The working directory contains file named `Delter.config.yaml`, which stores key input parameters for the workflow. 
 
-The Demo data could be accessed via https://figshare.com/articles/dataset/Example_dataset_containing_Fast5_and_BAM_files/26090575. User should modify the filepaths in the Delter.config.yaml in the snakemakeexample directory.
+The Demo data could be accessed via [figshare](https://figshare.com/articles/dataset/Example_dataset_containing_Fast5_and_BAM_files/26093869). User should modify the filepaths in the Delter.config.yaml in the snakemakeexample directory.
 
 ### Configure input parameters for the workflow
 There are two ways to configure input parameters for this workflow.
