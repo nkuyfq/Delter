@@ -53,6 +53,7 @@ dependencies:
 
 Users are suggested to use [Conda](https://docs.conda.io/en/latest/) or [Mamba](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html) to install these dependencies. After users download the working directory containing all the necessary files, the following shell command could install a workflow handling ONT R9 and R10 sequencing data in a **conda** environment named **Delter**.
 ```bash
+cd /path/to/Delter/working/directory
 conda env create --name Delter --file environment.yaml
 ```
 ## Activate and exit the environment
@@ -114,7 +115,7 @@ Users should note that, **config values can be overwritten via the command line*
 ### Start a run
 Once the work directory and configuration files are set up, users can run the pipeline as easy as invoking:
 ```bash
-cd /pathway/to/Delter/directory
+cd /path/to/Delter/working/directory
 conda activate Delter
 snakemake -s Delter.py --cores 8
 ```
