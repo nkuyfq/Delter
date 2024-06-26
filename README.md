@@ -56,6 +56,21 @@ Users are suggested to use [Conda](https://docs.conda.io/en/latest/) or [Mamba](
 cd /path/to/Delter/working/directory
 conda env create --name Delter --file environment.yaml
 ```
+or
+```bash
+cd /path/to/Delter/working/directory
+conda create --name Delter
+conda activate Delter
+conda install -c bioconda -y snakemake-minimal>=7.3
+conda install -c anaconda -y numpy pandas 
+conda install -c anaconda -y h5py seaborn
+conda install -c conda-forge -y scipy
+conda install -c bioconda -y samtools=1.15
+conda install -c conda-forge -y r-essentials r-base
+conda install -c conda-forge -y r-dplyr r-vegan r-stringr
+conda install -c bioconda -y bioconductor-shortread
+```
+
 ## Activate and exit the environment
 To activate the environment 
   ```bash
