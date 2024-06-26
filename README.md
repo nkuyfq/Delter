@@ -51,7 +51,7 @@ dependencies:
   - r-dplyr
   - r-vegan 
 
-Users are suggested to use [Conda](https://docs.conda.io/en/latest/) or [Mamba](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html) to install these dependencies. For example, the following shell command could install a workflow handling ONT R9 and R10 sequencing data in a **conda** environment named **Delter**.
+Users are suggested to use [Conda](https://docs.conda.io/en/latest/) or [Mamba](https://mamba.readthedocs.io/en/latest/user_guide/mamba.html) to install these dependencies. After users download the working directory containing all the necessary files, the following shell command could install a workflow handling ONT R9 and R10 sequencing data in a **conda** environment named **Delter**.
 ```bash
 conda env create --name Delter --file environment.yaml
 ```
