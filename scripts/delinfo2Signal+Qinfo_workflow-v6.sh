@@ -99,12 +99,19 @@ do
 	if [ $metric = "Signal" ]; then
 		#using a new version of python script
 		echo "Extracting sequencing current signals"
-		signalcount=signalcount+1
-		python scripts/get_signals_of_unpstream_downstream_N_bases_v3-240226.py ${startpos} ${endpos} ${targetpos} ${num} ${tombodir} ${outdir} ${outdir}
+		#signalcount=signalcount+1
+		#20241031 update
+		if [ -s ${outdir}/target.pos${targetpos}.minus.del.readID.txt -a -s ${outdir}/target.pos${targetpos}.plus.del.readID.txt -a -s ${outdir}/target.pos${targetpos}.minus.match.readID.txt -a -s ${outdir}/target.pos${targetpos}.plus.match.readID.txt ]; then
+			echo "Files OK"
+			signalcount=signalcount+1
+			python scripts/get_signals_of_unpstream_downstream_N_bases_v3-240226.py ${startpos} ${endpos} ${targetpos} ${num} ${tombodir} ${outdir} ${outdir}
+		else
+			echo "Files Bad"
+		fi
 	fi
 	if [ $metric = "Qscore" ]; then
 		echo "Extracting base qualities"
-		qscorecount=qscorecount+1
+		#qscorecount=qscorecount+1
 		samtools view --output-fmt SAM -@ 8 -h -f 16 ${bam} $refname:${targetpos}-${nextpos} | awk -F "\t" '{if(NF>=10){print $1,$2,$4,$6,$10,$11}}' OFS="\t" > ${outdir}/pos${targetpos}.rev.simpified.sam.txt
 		samtools view --output-fmt SAM -@ 8 -h -F 0x814 ${bam} $refname:${targetpos}-${nextpos} | awk -F "\t" '{if(NF>=10){print $1,$2,$4,$6,$10,$11}}' OFS="\t" > ${outdir}/pos${targetpos}.simpified.sam.txt
 		perl scripts/get_qualityscore_of_upstream_downstream_N_bases_v2.pl ${targetpos} D $num ${outdir}/pos${targetpos}.rev.simpified.sam.txt ${outdir}/target.pos${targetpos}.minus.del.fq ${outdir}/target.pos${targetpos}.minus.del.readID.txt
@@ -113,6 +120,8 @@ do
 		perl scripts/get_qualityscore_of_upstream_downstream_N_bases_v2.pl ${targetpos} M $num ${outdir}/pos${targetpos}.simpified.sam.txt ${outdir}/target.pos${targetpos}.plus.match.fq ${outdir}/target.pos${targetpos}.plus.match.readID.txt
 		if [ -s ${outdir}/target.pos${targetpos}.minus.del.fq -a -s ${outdir}/target.pos${targetpos}.minus.match.fq -a -s ${outdir}/target.pos${targetpos}.plus.del.fq -a -s ${outdir}/target.pos${targetpos}.plus.match.fq ]; then
 			echo "Files OK"
+			#20241031 update
+			qscorecount=qscorecount+1
 		else
 			rm ${outdir}/target.pos${targetpos}.minus.del.fq
 			rm ${outdir}/target.pos${targetpos}.minus.match.fq
@@ -127,7 +136,8 @@ done
 #====compare signal or fastq====
 if [ $signalcount -ge 1 ]; then
 	echo "Comparing signal"
-	Rscript scripts/comparison_Del_upstream_downstream_N_bases_subsample_v4-240226.R ${subsample} ${outdir} ${output1}
+	#20241031 update
+	Rscript scripts/comparison_Del_upstream_downstream_N_bases_subsample_v4-241031.R ${subsample} ${outdir} ${output1}
 	echo "Filtering result"
 	Rscript scripts/filter_MRPP_res.R ${outdir} ${strategy} ${mrppthres}
 	echo "Filtering MRPP-A is completed"
