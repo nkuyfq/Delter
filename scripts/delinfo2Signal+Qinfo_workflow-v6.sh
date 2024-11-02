@@ -158,12 +158,12 @@ fi
 echo "Run completed" > ${output3}
 
 cd ${outdir}
-# ls | grep "singal_length.txt" | xargs rm 
-# ls | grep "minus.del.fq" | xargs rm
-# ls | grep "minus.match.fq" | xargs rm
-# ls | grep "plus.del.fq" | xargs rm
-# ls | grep "plus.match.fq" | xargs rm
-# ls | grep "readID.txt" | xargs rm 
+ls | grep "singal_length.txt" | xargs rm 
+ls | grep "minus.del.fq" | xargs rm
+ls | grep "minus.match.fq" | xargs rm
+ls | grep "plus.del.fq" | xargs rm
+ls | grep "plus.match.fq" | xargs rm
+ls | grep "readID.txt" | xargs rm 
 
 rm $targetposlist
 rm $startposlist
