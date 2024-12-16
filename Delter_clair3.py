@@ -58,7 +58,7 @@ rule vcf2delinfo:
     benchmark:
         str(outdir) + "/" + "benchmarks/vcf2delinfo.benchmark.txt"
     script:
-        "scripts/vcf2delinfo-v2.sh"
+        "scripts/vcf2delinfo-v3.sh"
 
 rule delinfo2Signal_Qinfo:
     input:
@@ -86,5 +86,5 @@ rule delinfo2Signal_Qinfo:
     benchmark:
         str(outdir) + "/" + "benchmarks/delinfo2Signal_Qinfo.benchmark.txt"
     script:
-        "scripts/delinfo2Signal+Qinfo.sh"
+        "scripts/delinfo2Signal+Qinfo_clair3.sh"
 
